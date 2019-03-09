@@ -7,7 +7,7 @@
     "book": "node cli.js",
     "schedule": "node scheduler.js",
     "api": "node api.js",
-    "main": "node main.js",
+    "start": "node index.js",
     "precommit": "lint-staged",
     "set-config": "node scripts/set-config.js"
   },
