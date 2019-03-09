@@ -147,7 +147,7 @@ app.get(
   )
 );
 
-const PORT = 3002;
+const PORT = process.env.PORT || 8080;
 
 // Start the app and listen on port 3000
 app.listen(PORT, () => {
@@ -157,7 +157,7 @@ app.listen(PORT, () => {
       - Query params:
         - email: Gymbox user email
         - password: Gymbox user password
-    
+
     - GET: /api/add: Add a class to book
       - Query params:
         - email: Gymbox user email
