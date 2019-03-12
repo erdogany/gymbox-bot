@@ -1,1 +1,1 @@
-echo "hello world"
+curl https://gymbox-ec.herokuapp.com/?email=erdoganyusuf@gmail.com&password=utn8HhUgMLDY6fF

@@ -118,7 +118,7 @@ const main = (email, password) => {
           errorMessage = err.Message;
         }
 
-        log('Logged out, error: ', errorMessage);
+        log('Logged out.', errorMessage);
       });
     });
 };

@@ -7,6 +7,7 @@ const {
   getGymboxTimeTableById,
   getAllClubs
 } = require('./dist/requests');
+const { main } = require('./dist/booking');
 const { extractTimeTable, combineTimeTables } = require('./dist/timetable');
 const { createRxMiddleware } = require('./dist/utils/rx-middleware');
 const { readfile, writeFile } = require('./dist/utils/rx-fs');
@@ -141,6 +142,33 @@ app.get(
       .map(() => ({ status: 'Successfuly added class' }))
       .catch(err => {
         console.error("Couldn't add the class");
+        console.error(err);
+        return Observable.of({ error: err.message });
+      })
+  )
+);
+
+/**
+ * Run a class to book using the booking script
+ * params: { email: "email", password: "password" }
+ * return: Object | String
+ */
+app.get(
+  '/api/run',
+  createRxMiddleware(req$ =>
+    req$
+      .flatMap(req => {
+        if (!req.query.email || !req.query.password) {
+          return Observable.of({
+            message: 'Provide email and password query parameters'
+          });
+        }
+
+        return Observable.of(main(req.query.email, req.query.password));
+      })
+      .map(() => ({ status: 'Successfuly run.' }))
+      .catch(err => {
+        console.error('Run failed');
         console.error(err);
         return Observable.of({ error: err.message });
       })
