@@ -60,7 +60,7 @@ app.get(
 );
 
 /**
- * Get the time table
+ * Get the time tables
  * params: void
  * return: Object
  */
