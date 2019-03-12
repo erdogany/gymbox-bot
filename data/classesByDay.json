@@ -3,5 +3,10 @@
     "className": "Gymboxing",
     "time": "18:00",
     "location": "Elephant and Castle"
+  },
+  "Thursday": {
+    "className": "Counterpunch",
+    "time": "18:45",
+    "location": "Elephant and Castle"
   }
 }
