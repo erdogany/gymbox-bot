@@ -8,5 +8,10 @@
     "className": "Counterpunch",
     "time": "18:45",
     "location": "Elephant and Castle"
+  },
+  "Sunday": {
+    "className": "Frame Fitness",
+    "time": "12:00",
+    "location": "Elephant and Castle"
   }
 }
