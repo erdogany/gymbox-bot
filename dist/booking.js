@@ -20,13 +20,10 @@ const filterToBook = (classes, getClassDate) => lessons => {
   let classesToBook = Object.keys(classes)
     .filter(
       key =>
-        // Is the class minus 1 days at 7am same or before current date / time
+        // Is the class next day (because all bookings open 1 day before at 7am)
         getClassDate(key)
           .subtract(1, 'day')
-          .hour(7)
-          .minute(0)
-          .second(0)
-          .isSameOrBefore(moment()) &&
+          .isSame(moment(), 'day') &&
         // Is the class after current date / time
         getClassDate(key)
           .hour(23)
@@ -67,7 +64,7 @@ const filterAllClassesToBook = lessons => {
 
 const bookClasses = lessons => {
   if (lessons && lessons.length > 0) {
-    log(`Lessons ready to book: ${lessons.map(l => l.className).join(' ')}`);
+    log(`Lessons ready to book: ${lessons.map(l => l.className).join(', ')}`);
     return Promise.all(lessons.map(postBooking));
   }
 
