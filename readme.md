@@ -4,9 +4,9 @@
 
 Provide you a complete experience to automate booking of your gymbox classes:
 
-- API: Add class to book
-- Scheduler: Cron to run on your server to check class to book everydays at 7am
-- Cli: Book a class using command line
+* API: Add class to book
+* Scheduler: Cron to run on your server to check class to book everydays at 7am for classes on next day
+* Cli: Book a class using command line
 
 ## How to make a booking
 
@@ -67,17 +67,31 @@ node api.js
 
 Endpoints:
 
-- GET: `/api/table`: return the gymbox time table
+* GET: `/api/table`: return the gymbox time table
 
-  - Query params:
-    - `email`: Gymbox user email
-    - `password`: Gymbox user password
+  * Query params:
+    * `email`: Gymbox user email
+    * `password`: Gymbox user password
 
-- GET: `/api/add`: Add a class to book
-  - Query params:
-    - `email`: Gymbox user email
-    - `password`: Gymbox user password
-    - `className`: The name of the class to book
-    - `time`: The time of the class to book, format: HH:mm
-    - `date`: The date of the class to book, format: YYYY-MM-DD
-    - `location`: The gym location of the class to book
+* GET: `/api/add`: Add a class to book
+
+  * Query params:
+    * `email`: Gymbox user email
+    * `password`: Gymbox user password
+    * `className`: The name of the class to book
+    * `time`: The time of the class to book, format: HH:mm
+    * `date`: The date of the class to book, format: YYYY-MM-DD
+    * `location`: The gym location of the class to book
+
+* GET: `/api/run`: Run the booking process
+  * Query params:
+    * `email`: Gymbox user email
+    * `password`: Gymbox user password
+
+# Using on heroku (free)
+
+Simply create a heroku account and deploy this app. (See docs: https://devcenter.heroku.com/articles/git)
+
+Once you create the app add heroku scheduler. (https://devcenter.heroku.com/articles/scheduler)
+
+Scheduler needs to run bin/book.sh everyday at 7am; this will make the bookings.
