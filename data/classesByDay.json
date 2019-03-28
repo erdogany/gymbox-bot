@@ -9,9 +9,9 @@
     "time": "18:45",
     "location": "Elephant and Castle"
   },
-  "Sunday": {
-    "className": "Frame Fitness",
-    "time": "12:00",
+  "Saturday": {
+    "className": "Kettlebells",
+    "time": "13:30",
     "location": "Elephant and Castle"
   }
 }
